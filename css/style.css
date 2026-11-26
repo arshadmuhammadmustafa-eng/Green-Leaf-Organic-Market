@@ -1,0 +1,166 @@
+/* Green Leaf Organic Market - one stylesheet for all pages
+   Palette: Cream #F8F3E9, Beige #E8DCC8, Sage #A3B18A, Olive #4F6846 */
+
+:root {
+  --cream: #F8F3E9;
+  --beige: #E8DCC8;
+  --sage: #A3B18A;
+  --olive: #4F6846;
+  --ink: #2B3A27;          /* darker olive tint for body text (WCAG AA on cream) */
+  --error: #8A2C1F;
+  --radius: 12px;
+  --space: 1rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--cream);
+}
+
+h1, h2, h3, nav, button, label, th, .btn {
+  font-family: "Trebuchet MS", Verdana, Arial, sans-serif;
+}
+
+h1, h2, h3 { color: var(--olive); line-height: 1.2; }
+h1 { font-size: 2rem; margin: 0 0 var(--space); }
+h2 { font-size: 1.5rem; margin: 2rem 0 var(--space); }
+h3 { font-size: 1.2rem; margin: 0.5rem 0; }
+
+a { color: var(--olive); text-underline-offset: 3px; }
+a:hover { color: var(--ink); }
+
+/* Keyboard focus is always clearly visible */
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--cream);
+  padding: 0.5rem 1rem;
+  z-index: 10;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Header and navigation (same on every page) ---------- */
+.site-header { background: var(--olive); color: var(--cream); }
+.header-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--space);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.logo { font-size: 1.5rem; font-weight: bold; color: var(--cream); text-decoration: none; font-family: "Trebuchet MS", Verdana, sans-serif; }
+.logo:hover { color: var(--beige); }
+
+.main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.main-nav a {
+  display: block;
+  padding: 0.6rem 1rem;       /* large tap target */
+  color: var(--cream);
+  text-decoration: none;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
+.main-nav a:hover { background: var(--sage); color: var(--ink); }
+.main-nav a[aria-current="page"] { background: var(--cream); color: var(--olive); font-weight: bold; }
+.main-nav a:focus-visible { outline-color: var(--cream); }
+
+/* ---------- Layout ---------- */
+main { max-width: 1000px; margin: 0 auto; padding: 1.5rem var(--space) 3rem; }
+
+.hero {
+  background: var(--beige);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+}
+.hero img { width: 100%; height: auto; border-radius: var(--radius); display: block; }
+
+.btn {
+  display: inline-block;
+  background: var(--olive);
+  color: var(--cream);
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--olive);
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover { background: var(--ink); border-color: var(--ink); color: var(--cream); }
+
+.cards { display: grid; gap: 1.25rem; list-style: none; padding: 0; margin: 0; }
+.card {
+  background: var(--beige);
+  border-radius: var(--radius);
+  padding: 1rem;
+  border-top: 6px solid var(--sage);
+}
+.card img { width: 100%; height: auto; border-radius: 8px; display: block; background: var(--cream); }
+.card p { margin: 0.25rem 0; }
+
+.feature-list li { margin-bottom: 0.5rem; }
+
+/* ---------- Table ---------- */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--cream); }
+caption { text-align: left; font-weight: bold; padding: 0.5rem 0; color: var(--olive); }
+th, td { padding: 0.75rem; text-align: left; border: 1px solid var(--sage); }
+th { background: var(--olive); color: var(--cream); }
+tbody tr:nth-child(even) { background: var(--beige); }
+
+/* ---------- Form ---------- */
+form {
+  background: var(--beige);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  border-top: 6px solid var(--sage);
+}
+.field { margin-bottom: 1.25rem; }
+label { display: block; font-weight: bold; color: var(--olive); margin-bottom: 0.3rem; }
+input, select, textarea {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--ink);
+  background: var(--cream);
+  border: 2px solid var(--olive);
+  border-radius: 8px;
+}
+.hint { font-size: 0.95rem; margin: 0 0 0.3rem; }
+.error-msg { color: var(--error); font-weight: bold; margin: 0.3rem 0 0; min-height: 0; font-family: "Trebuchet MS", Verdana, sans-serif; font-size: 1rem; }
+.invalid { border-color: var(--error); background: #fff; }
+.form-summary { border-radius: 8px; padding: 0; }
+.form-summary.success { background: var(--sage); color: var(--ink); padding: 1rem; margin-top: 1rem; font-weight: bold; }
+.form-summary.problem { background: #fff; color: var(--error); border: 2px solid var(--error); padding: 1rem; margin-top: 1rem; font-weight: bold; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--beige); border-top: 6px solid var(--sage); text-align: center; padding: 1.25rem var(--space); }
+.site-footer p { margin: 0.25rem 0; }
+
+/* ---------- Responsive: the ONE media query (tablet / computer) ----------
+   Everything above is the phone layout (single column). */
+@media (min-width: 768px) {
+  .header-inner { flex-direction: row; justify-content: space-between; align-items: center; }
+  .hero { grid-template-columns: 1fr 1fr; padding: 2rem; }
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  h1 { font-size: 2.5rem; }
+}
